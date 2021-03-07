@@ -1,5 +1,3 @@
-// DESAFIO SIMULADOR INTERACTIVO
-
 function calcularComision (valorOfertado, porcentajeComision){
     let resultado = parseInt(valorOfertado * porcentajeComision);
     return resultado;
