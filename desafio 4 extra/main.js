@@ -1,4 +1,4 @@
-// DESAFIO FUNCIONES RELACIONADAS
+/* DESAFIO FUNCIONES RELACIONADAS
 
 function ofertarNumero () {
     let oferta = prompt("Ingrese un valor. En caso de querer terminar, escriba salir");
@@ -37,3 +37,38 @@ if (realizarOferta ==  "si" || realizarOferta ==  "sí" ||
         ofertaNumero = prompt("Si quiere realizar otra oferta, ingrese un valor, sino escriba salir"); 
     }
 }
+
+
+*/
+
+
+let persona;
+
+function Persona (nombre,apellido,email){
+    this.nombre = nombre;
+    this.apellido = apellido;
+    this.email = email;
+}
+
+function ingresarDatos() {
+    let nombre = prompt ("Ingrese su nombre");
+    let apellido = prompt("Ingrese su apellido");
+    let email = prompt("Ingrese su email");
+    persona = new Persona (nombre, apellido, email);
+}
+
+ingresarDatos();
+alert("Hola" + persona.nombre + persona.apellido);
+
+//
+
+function Cliente (nombre, apellido, email){
+    this.nombre = nombre;
+    this.apellido = apellido;
+    this.email = email;
+    this.clienteCompleto = function() { return nombre + "" + apellido}
+
+}
+
+const cliente = new Cliente ();
+alert()
