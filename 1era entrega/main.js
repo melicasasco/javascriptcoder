@@ -107,7 +107,9 @@ if (realizarOferta ==  "si" || realizarOferta ==  "sí" ||
 
 // Se recorren las ofertas para mostrarle al usuario los precios de lo que oferto
     for (let i=0; i<=obras.length-1; i++) {
-        alert("Para la obra: " + obras[i].titulo + " su oferta fue de " + obras[i].oferta);
+        if (obras[i].oferta > 0){
+            alert("Para la obra: " + obras[i].titulo + " su oferta fue de " + obras[i].oferta)
+        }
     }
     alert("te enviaremos tus ofertas al mail: " + persona1.email);
 }
