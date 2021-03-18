@@ -1,4 +1,4 @@
-//PRIMERA ENTREGA DEL PROYECTO - GALERIA DE ARTE NEXUS 
+//EVENTOS - GALERIA DE ARTE NEXUS 
 
 
 // Defino clase persona
@@ -123,9 +123,14 @@ function botonOferta () {
         alert("Muchas gracias por su visita.");
     }
 }
-/*
-// Se recorren las ofertas para mostrarle al usuario los precios de lo que oferto
 
-*/
+//formulario seccion CONTACTO
 
 
+let datosUsuario = function () {
+    var nombre = document.getElementById("nameLabel").value;
+    var email = document.getElementById("emailLabel").value;
+    var asunto = document.getElementById("subjectLabel").value;
+    var mensaje = document.getElementById("messageLabel").value;
+    return alert("Gracias por su consulta " + nombre + " Responderemos a la brevedad");
+}
