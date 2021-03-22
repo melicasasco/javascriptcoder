@@ -125,12 +125,61 @@ function botonOferta () {
 }
 
 //formulario seccion CONTACTO
+let miFormulario      = document.getElementById("formulario");
+miFormulario.addEventListener("submit", validarFormulario);
 
-
-let datosUsuario = function () {
-    var nombre = document.getElementById("nameLabel").value;
-    var email = document.getElementById("emailLabel").value;
-    var asunto = document.getElementById("subjectLabel").value;
-    var mensaje = document.getElementById("messageLabel").value;
-    return alert("Gracias por su consulta " + nombre + " Responderemos a la brevedad");
+function validarFormulario(e){
+    e.preventDefault();
+    console.log("Formulario Enviado");    
 }
+ 
+function datosUsuario () {
+    var nombre = document.getElementById("name").value;
+    //var email = document.getElementById("email").value;
+    //var asunto = document.getElementById("subject").value;
+    //var mensaje = document.getElementById("message").value;
+    if (nombre != ""){
+        return alert("Gracias por su consulta " + nombre + " Responderemos a la brevedad");
+    }
+}
+
+    
+// Buscador de artistas en artistas.html
+let artistas = [
+    { nombre: "Berni"},
+    { nombre: "Castagnino"},
+    { nombre: "Alonso"},
+    { nombre: "Minujin"},
+    { nombre: "Roux"},
+    { nombre: "Tasso"},
+    { nombre: "Quinquela"},
+    { nombre: "Koek Koek"}
+];
+
+// Agregar artista
+function agregarArtista (artista) {
+let nuevoNodoArtista = document.createElement("div");
+nuevoNodoArtista.id = artista.nombre.toLowerCase();
+nuevoNodoArtista.className = "artista";
+nuevoNodoArtista.innerHTML = 
+    `<h3>${artista.nombre}</h3>`;
+document.getElementById("lista").appendChild(nuevoNodoArtista);
+}
+
+// Borrar todos los artists
+function borrarTodosLosArtistas() {
+document.getElementById("lista").innerHTML = '';
+}
+
+const buscar = (e) => {
+// Mostrar los artistas que coincidan con la busqueda
+borrarTodosLosArtistas();
+const artistasFiltrados = 
+    artistas.filter(a => a.nombre == e.target.value);
+for(let artista of artistasFiltrados){
+    agregarArtista(artista);
+    }
+}
+
+// Agregar manejador de evento change
+document.getElementById("artista").addEventListener("change", buscar);
