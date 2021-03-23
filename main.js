@@ -124,29 +124,10 @@ function botonOferta () {
     }
 }
 
-//formulario seccion CONTACTO
-let miFormulario      = document.getElementById("formulario");
-miFormulario.addEventListener("submit", validarFormulario);
-
-function validarFormulario(e){
-    e.preventDefault();
-    console.log("Formulario Enviado");    
-}
- 
-function datosUsuario () {
-    var nombre = document.getElementById("name").value;
-    //var email = document.getElementById("email").value;
-    //var asunto = document.getElementById("subject").value;
-    //var mensaje = document.getElementById("message").value;
-    if (nombre != ""){
-        return alert("Gracias por su consulta " + nombre + " Responderemos a la brevedad");
-    }
-}
-
-    
 // Buscador de artistas en artistas.html
+// Declaro mi array de artistas
 let artistas = [
-    { nombre: "Berni"},
+    { nombre: "Berni, Antonio"},
     { nombre: "Castagnino"},
     { nombre: "Alonso"},
     { nombre: "Minujin"},
@@ -156,13 +137,14 @@ let artistas = [
     { nombre: "Koek Koek"}
 ];
 
+
 // Agregar artista
 function agregarArtista (artista) {
 let nuevoNodoArtista = document.createElement("div");
 nuevoNodoArtista.id = artista.nombre.toLowerCase();
-nuevoNodoArtista.className = "artista";
+nuevoNodoArtista.className = "Lato";
 nuevoNodoArtista.innerHTML = 
-    `<h3>${artista.nombre}</h3>`;
+    `<p>${artista.nombre}</p>`;
 document.getElementById("lista").appendChild(nuevoNodoArtista);
 }
 
@@ -174,8 +156,8 @@ document.getElementById("lista").innerHTML = '';
 const buscar = (e) => {
 // Mostrar los artistas que coincidan con la busqueda
 borrarTodosLosArtistas();
-const artistasFiltrados = 
-    artistas.filter(a => a.nombre == e.target.value);
+//const artistasFiltrados = artistas.filter(a => a.nombre.toLocaleLowerCase() == e.target.value.toLocaleLowerCase());
+const artistasFiltrados = artistas.filter(a => a.nombre.toLocaleLowerCase().includes(e.target.value.toLocaleLowerCase()));
 for(let artista of artistasFiltrados){
     agregarArtista(artista);
     }
@@ -183,3 +165,17 @@ for(let artista of artistasFiltrados){
 
 // Agregar manejador de evento change
 document.getElementById("artista").addEventListener("change", buscar);
+
+
+
+//formulario seccion CONTACTO
+let miFormulario = document.getElementById("formulario");
+miFormulario.addEventListener("submit", validarFormulario);
+
+function validarFormulario(e){
+    e.preventDefault();
+    console.log("Formulario Enviado");
+    var nombre = document.getElementById("name").value;   
+    alert("Gracias por su consulta " + nombre + " Responderemos a la brevedad");
+    formulario.reset();
+}
