@@ -1,4 +1,4 @@
-//formulario seccion Subastas
+//formulario de la seccion Subastas
 
 
 class Obra {
@@ -20,6 +20,15 @@ function calcularComision (valorOfertado, porcentajeComision){
 let miFormulario = document.getElementById("formularioSubastas");
 miFormulario.addEventListener("submit", validarFormulario);
 
+//funcion p recorrer las ofertas guardadas en el sessionStorage
+function verMiOferta () {
+    let len=sessionStorage.length;
+    for(var i=0; i<len; i++) {
+        var key = sessionStorage.key(i);
+        var value = sessionStorage.getItem(key);
+        alert("Usted ofertó " + value + " por la obra intitulada " + key);
+    }
+}
 
 function validarFormulario(e){
     e.preventDefault();
@@ -35,7 +44,7 @@ function validarFormulario(e){
     var oferta = parseInt(document.getElementById("oferta").value);
     let mensajeOferta = document.getElementById("mensajeOferta");
     mensajeOferta.innerHTML = '';
-    if (oferta <= obra1.base) {
+    if ((oferta <= obra1.base) || isNaN(oferta)) {
         let nuevoNodoOferta = document.createElement("div");
         nuevoNodoOferta.className = "Cormorant";
         nuevoNodoOferta.innerHTML = "Hola " + nombre + ", debe ofertar un valor mayor al precio base: "
@@ -51,6 +60,13 @@ function validarFormulario(e){
         + valorTotal + "U$S. Le enviaremos un mensaje a su correo: " + email;
         mensajeOferta.appendChild(nuevoNodoOferta);
         formularioSubastas.reset();
+        sessionStorage.setItem(titulo, oferta);
+        let nuevoNodoVerOferta = document.createElement("div");
+        nuevoNodoVerOferta.className = "d-flex justify-content-center pb-4";
+        nuevoNodoVerOferta.innerHTML = "<button onclick=\"verMiOferta()\" class=\"btn-dark\">Ver mi oferta</button>";
+        mensajeOferta.appendChild(nuevoNodoVerOferta);
+
     }
 }
+
 
