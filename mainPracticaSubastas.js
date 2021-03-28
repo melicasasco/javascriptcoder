@@ -42,30 +42,31 @@ function validarFormulario(e){
     console.log(obra1.base);   
     var email = document.getElementById("email").value;
     var oferta = parseInt(document.getElementById("oferta").value);
-    let mensajeOferta = document.getElementById("mensajeOferta");
-    mensajeOferta.innerHTML = '';
-    if ((oferta <= obra1.base) || isNaN(oferta)) {
-        let nuevoNodoOferta = document.createElement("div");
-        nuevoNodoOferta.className = "Cormorant";
-        nuevoNodoOferta.innerHTML = "Hola " + nombre + ", debe ofertar un valor mayor al precio base: "
-        + obra1.base + "U$S. por favor revise el monto ingresado.";
-        mensajeOferta.appendChild(nuevoNodoOferta)
-    }
-    else {
-        let valorTotal = calcularComision(oferta, 1.185);
-        console.log(valorTotal);
-        let nuevoNodoOferta = document.createElement("div");
-        nuevoNodoOferta.className = "Cormorant";
-        nuevoNodoOferta.innerHTML = "Hola " + nombre + ", muchas gracias por su oferta. En caso de resultar el comprador de la obra, deberá abonar un total de "
-        + valorTotal + "U$S. Le enviaremos un mensaje a su correo: " + email;
-        mensajeOferta.appendChild(nuevoNodoOferta);
-        formularioSubastas.reset();
-        sessionStorage.setItem(titulo, oferta);
-        let nuevoNodoVerOferta = document.createElement("div");
-        nuevoNodoVerOferta.className = "d-flex justify-content-center pb-4";
-        nuevoNodoVerOferta.innerHTML = "<button onclick=\"verMiOferta()\" class=\"btn-dark\">Ver mi oferta</button>";
-        mensajeOferta.appendChild(nuevoNodoVerOferta);
-
+    if (!isNaN(oferta)) {
+        let mensajeOferta = document.getElementById("mensajeOferta");
+        mensajeOferta.innerHTML = '';
+        if (oferta <= obra1.base)  {
+            let nuevoNodoOferta = document.createElement("div");
+            nuevoNodoOferta.className = "Cormorant";
+            nuevoNodoOferta.innerHTML = "Hola " + nombre + ", debe ofertar un valor mayor al precio base: "
+            + obra1.base + "U$S. por favor revise el monto ingresado.";
+            mensajeOferta.appendChild(nuevoNodoOferta)
+        }
+        else {
+            let valorTotal = calcularComision(oferta, 1.185);
+            console.log(valorTotal);
+            let nuevoNodoOferta = document.createElement("div");
+            nuevoNodoOferta.className = "Cormorant";
+            nuevoNodoOferta.innerHTML = "Hola " + nombre + ", muchas gracias por su oferta. En caso de resultar el comprador de la obra, deberá abonar un total de "
+            + valorTotal + "U$S. Le enviaremos un mensaje a su correo: " + email;
+            mensajeOferta.appendChild(nuevoNodoOferta);
+            formularioSubastas.reset();
+            sessionStorage.setItem(titulo, oferta);
+            let nuevoNodoVerOferta = document.createElement("div");
+            nuevoNodoVerOferta.className = "d-flex justify-content-center pb-4";
+            nuevoNodoVerOferta.innerHTML = "<button type=\"text\" onclick=\"verMiOferta()\" class=\"btn-dark\">Ver mi oferta</button>";
+            mensajeOferta.appendChild(nuevoNodoVerOferta);
+        }
     }
 }
 
