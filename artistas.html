@@ -6,6 +6,7 @@
 	<meta name="description" content="Este es el sitio web de la Galería de Arte Nexus donde encontrarás obras de los artistas más consagrados del Arte Argentino.">
    <meta name="keywords"  content="ARTE, ARTE ARGENTINO, ARTISTAS, GRANDES MAESTROS">
 	<title>Artistas</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 	<script src="https://unpkg.com/scrollreveal"></script>
 	<link rel="stylesheet" href="css/styles.css">
@@ -58,10 +59,12 @@
             <div class="container fluid">
                 <div class="row">
                     <div class="d-flex justify-content-center col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <input id="artista" type="text" placeholder="Buscar por artista">
-                        <div id="lista">
+                        <input id="formBuscar" type="text" placeholder="Buscar por artista">
+                        <div id="obra">
                         </div>
-                    </div>
+						<div id="artistas" class="">
+						</div>
+					</div>
                 </div> 
             </div>    
         <br>
@@ -272,6 +275,7 @@
 	 </footer>
   <!-- Grid container -->
     <script src="artistas.js"></script>
+	<script src="artistas.json"></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 	<script>

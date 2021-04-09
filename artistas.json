@@ -1,0 +1,77 @@
+[
+    {
+        "id":1,
+        "nombre": "Alonso, Carlos",
+        "Obra": "Maternidad",
+        "Tecnica": "Mixta",
+        "Medidas": "50x70",
+        "Año": "1975"
+    },
+    {
+        "id":2,
+        "nombre": "Alonso, Carlos",
+        "Obra": "Retrato",
+        "Tecnica": "Óleo sobre tela",
+        "Medidas": "60x60",
+        "Año": "1968"
+
+    },
+    {
+        "id":3,
+        "nombre": "Alonso, Carlos",
+        "Obra": "Naturaleza muerta",
+        "Tecnica": "Óleo sobre tela",
+        "Medidas": "55x75",
+        "Año": "1970"
+    },
+    {
+        "id":4,
+        "nombre": "Alonso, Carlos",
+        "Obra": "Naturaleza muerta",
+        "Tecnica": "Acrílico sobre tela",
+        "Medidas": "80x80",
+        "Año": "1987"
+    },
+    {
+        "id":5,
+        "nombre": "Berni, Antonio",
+        "Obra": "Picador y caballo",
+        "Tecnica": "Gofrado",
+        "Medidas": "42x55",
+        "Año": ""
+    },
+    {
+        "id":6,
+        "nombre": "Berni, Antonio",
+        "Obra": "Juanito Laguna y su amigo",
+        "Tecnica": "Xilografía",
+        "Medidas": "120x80",
+        "Año": ""
+    },
+    {
+        "id":7,
+        "nombre": "Berni, Antonio",
+        "Obra": "La primavera de Ramona",
+        "Tecnica": "Xilocollage",
+        "Medidas": "99x65",
+        "Año": "1963"
+    },
+    {
+        "id":6,
+        "nombre": "Berni, Antonio",
+        "Obra": "Juanito Laguna y su amigo",
+        "Tecnica": "Xilografía",
+        "Medidas": "120x80",
+        "Año": ""
+    },
+    {
+        "id":7,
+        "nombre": "Lynch, Justo",
+        "Obra": "Marina",
+        "Tecnica": "Óleo sobre tabla",
+        "Medidas": "34x40",
+        "Año": ""
+    }
+
+
+]

@@ -1,46 +1,58 @@
-// Buscador de artistas en artistas.html
-// Declaro mi array de artistas
-let artistas = [
-    { nombre: "Berni, Antonio"},
-    { nombre: "Castagnino, Juan Carlos"},
-    { nombre: "Alonso, Carlos"},
-    { nombre: "Minujin, Marta"},
-    { nombre: "Roux, Guillermo"},
-    { nombre: "Roux, Ricardo"},
-    { nombre: "Tasso, Torcuato"},
-    { nombre: "Quinquela, Benito Martin"},
-    { nombre: "Koek Koek, Stephen"},
-    { nombre: "Lynch, Justo"}
-];
+const artistas = [];
 
-
-// Agregar artista
-function agregarArtista (artista) {
-let nuevoNodoArtista = document.createElement("div");
-nuevoNodoArtista.id = artista.nombre.toLowerCase();
-nuevoNodoArtista.className = "Lato";
-nuevoNodoArtista.innerHTML = 
-    `<p>${artista.nombre}</p>`;
-document.getElementById("lista").appendChild(nuevoNodoArtista);
-}
-
-// Borrar todos los artists
-function borrarTodosLosArtistas() {
-document.getElementById("lista").innerHTML = '';
-}
-
-const buscar = (e) => {
-// Mostrar los artistas que coincidan con la busqueda
-borrarTodosLosArtistas();
-//const artistasFiltrados = artistas.filter(a => a.nombre.toLocaleLowerCase() == e.target.value.toLocaleLowerCase());
-const artistasFiltrados = artistas.filter(a => a.nombre.toLocaleLowerCase().includes(e.target.value.toLocaleLowerCase()));
-for(let artista of artistasFiltrados){
-    agregarArtista(artista);
+function cargarArtistas() {
+  // Ajax
+  $.getJSON('artistas.json', (res, estado) => {
+    if (estado === "success") {
+      console.log(res);
+      res.map(p=>artistas.push(p));
+    } else {
+      console.log('Error al cargar artistas.')
     }
+  });
 }
 
-// Agregar manejador de evento change
-document.getElementById("artista").addEventListener("change", buscar);
+function agregarartistasAmiDom() {
+  for(artista of artistas) {
+    $('#artistas').append(`
+      <div id="artista_${artista.id}">
+        <div class="row py-3">
+          <div class="col-3 px-3">
+            <img width=180 height=300 src="${artista.obra}">
+          </div>
+          <div class="col-6">
+            <h2>${artista.nombre}</h2>
+            <p>${artista.tecnica} - ${artista.medidas}</p>
+            <p>${artista.año}</p>
+          </div>
+        </div>
+      </div>
+    `);
+  }
+}
 
+function filtrarYOrdenar(busqueda, obra) {
+  for(artista of artistas) {
+    const coincideartista = artista.nombre.toLowerCase().substr(0,busqueda.length) === busqueda.toLowerCase();
+    const coincideObra = artista.obra.toLowerCase() === obra.toLowerCase();
+    if (coincideartista && coincideObra) {
+      $(`#artista_${artista.id}`).show();
+    } else {
+      $(`#artista_${artista.id}`).hide();
+    }
+  }
+}
 
+// 1) 
+cargarArtistas();
 
+// 2) ready
+$(() => {
+  agregarartistasAmiDom();
+  $("#formBuscar").submit((e) => {
+    e.preventDefault();
+    const busqueda = $("#buscar").val();
+    const obra = $("#obra option:selected").text();
+    filtrarYOrdenar(busqueda,obra);
+  });
+});
