@@ -21,12 +21,26 @@ $("#formularioSubastas").submit(validarFormulario);
 
 
 //funcion p recorrer las ofertas guardadas en el sessionStorage
-function verMiOferta () {
+/*function verMiOferta () {
     let len=sessionStorage.length;
     for(var i=0; i<len; i++) {
         var key = sessionStorage.key(i);
         var value = sessionStorage.getItem(key);
         alert("Usted ofertó " + value + " por la obra intitulada " + key);
+    }
+}*/
+
+function verMiOferta () {
+    let len=sessionStorage.length;
+    for(var i=0; i<len; i++) {
+        var key = sessionStorage.key(i);
+        var value = sessionStorage.getItem(key);
+        //alert("Usted ofertó " + value + " por la obra intitulada " + key);
+        $("#verMiOferta").append('<p>Usted ofertó ${value} por la obra intitulada ${key}</p>');
+        //Métodos encadenados
+            $("p").css("color", "red")
+            .slideUp(0)
+            .slideDown(2000);
     }
 }
 
@@ -54,24 +68,29 @@ function validarFormulario(e){
         $("#mensajeOferta").html("");
         //Si la oferta es menor o igual que el numero de base que figura en la tabla, doy ese msj
         if (oferta <= obra1.base)  {
-            $("#mensajeOferta").append(`<div class="Cormorant">Hola ${nombre}, debe ofertar un valor mayor al precio base:
+            $("#mensajeOferta").append(`<div class="Cormorant" style="display: none">Hola ${nombre}, debe ofertar un valor mayor al precio base:
             ${obra1.base}U$S. por favor revise el monto ingresado.</div>`);
+            $("div").fadeIn(700); 
         }
         //Si la oferta es mayor que el numero de base que figura en la tabla, doy ese msj y guardo el contenido
         else {
             let valorTotal = calcularComision(oferta, 1.185);
             console.log(valorTotal);
-            $("#mensajeOferta").append(`<div class="Cormorant">Hola ${nombre}, muchas gracias por su oferta. En caso de resultar el comprador de la obra, deberá abonar un total de
+            $("#mensajeOferta").append(`<div class="Cormorant" style="display: none">Hola ${nombre}, muchas gracias por su oferta. En caso de resultar el comprador de la obra, deberá abonar un total de
             ${valorTotal}U$S. Le enviaremos un mensaje a su correo: ${email}</div>`)
+            $("div").fadeIn(500); 
             $("#formularioSubastas").trigger("reset");
             // me guardo la el titulo de la obra y la oferta realizada
             sessionStorage.setItem(titulo, oferta);
             // creo un boton por el cual puedo ver la oferta guardada porque le pongo un onclick
             //que llama a la funcion "verMiOferta()"
-            $("#mensajeOferta").append(`<div class="d-flex justify-content-center pb-4"><button type="text" onclick="verMiOferta()" class="btn-dark"> 
-            Ver mi oferta</button></div>`)
+            $("#mensajeOferta").append(`<div class="d-flex justify-content-center pb-4"><a class="btn btn-mod btn-border btn-large" href="verMiOferta.html" type="text" onclick="verMiOferta()" class="btn-dark"> 
+            Ver mi oferta</a></div>`)
+            
         }
     }
 }
+
+
 
 
