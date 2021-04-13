@@ -71,7 +71,53 @@
         "tecnica": "Óleo sobre tabla",
         "medidas": "34x40",
         "año": ""
+    }, 
+    {
+        "id":10,
+        "nombre": "Minujin, Marta",
+        "obra": "Colchones",
+        "tecnica": "Mixta sobre cartón",
+        "medidas": "35x60",
+        "año": "2007"
+    },
+    {
+        "id":11,
+        "nombre": "Quinquela Martin, Benito",
+        "obra": "Riachuelo",
+        "tecnica": "Óleo sobre tabla",
+        "medidas": "35x70",
+        "año": "1930"
+    },
+    {
+        "id":12,
+        "nombre": "Roux, Guillermo",
+        "obra": "Flores",
+        "tecnica": "Óleo pastel",
+        "medidas": "20x40",
+        "año": "2010"
+    },
+    {
+        "id":13,
+        "nombre": "Tasso, Torcuato",
+        "obra": "San Martin",
+        "tecnica": "Bronce a la cera perdida",
+        "medidas": "50x30x12",
+        "año": "1935"
+    },
+    {
+        "id":14,
+        "nombre": "Roux, Guillermo",
+        "obra": "Autorretrato",
+        "tecnica": "Tinta",
+        "medidas": "55x50",
+        "año": "2019"
+    },
+    {
+        "id":15,
+        "nombre": "Quinquela Martin, Benito",
+        "obra": "Mar del Plata",
+        "tecnica": "Óleo sobre tabla",
+        "medidas": "50x70",
+        "año": "1935"
     }
-
-
 ]
