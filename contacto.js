@@ -7,7 +7,7 @@ miFormulario.submit(validarFormulario);
 function validarFormulario(e){
     e.preventDefault();
     var nombre = $("#name").val();
- 
+ // si el nombre es distinto de vacio entro al if
     if(nombre != "") {
         console.log("Formulario Enviado");
         $("#contactoMensaje").html('');
