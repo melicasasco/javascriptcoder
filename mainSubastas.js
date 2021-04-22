@@ -23,16 +23,12 @@ function calcularComision (valorOfertado, porcentajeComision){
 
 $("#formularioSubastas").submit(validarFormulario);
 
-
-
 $("#mostrarOfertas").click(verMiOferta);
-
 
 function verMiOferta (e) {
     console.log("Entro a la funcion");
-    //me guardo en len el length de sessionstorage, o sea cantidad de elementos
+    //me guardo en len el length de sessionstorage
     let len=sessionStorage.length;
-    //si ya habia algo en el div que inserto contenido primero lo borro
     $("#verMiOferta").html('');
     //recorro todos los elementos de mi session storage
     for(var i=0; i<len; i++) {
@@ -58,29 +54,24 @@ function verMiOferta (e) {
         <p id="volverSubastas" class="text-center"><a href="subastas.html"><u>Ver más obras de la subasta</u></a></p>`);
 }
 
+
 function validarFormulario(e){
     e.preventDefault();
-    console.log("Formulario Enviado");
     //creo variables que guardan valor de lo que figura en la tabla con los datos de la obra
     let artista = $("#artistaObra").text();
     let titulo = $("#tituloObra").text();
     let tecnica = $("#tecnicaObra").text();
     let base = parseInt($("#baseObra").text());
-    // creo objeto Obra llamando al constructor 
     const obra1 = new Obra (artista, tecnica, titulo, base); 
-    // del input con ID name obtengo el nombre que ingresa el usuario y lo guardo
     var nombre = $("#name").val();
-    console.log(obra1.base);   
-    // del input con ID email obtengo el email que ingresa el usuario y lo guardo
     var email = $("#email").val();
-    // del input con ID oferta obtengo el valor que ingresa el usuario y lo guardo
     var oferta = parseInt($("#oferta").val());
     // si la oferta es un numero, entro al if
     if (!isNaN(oferta)) {
         console.log("oferta: " + oferta);
         console.log("base:" + base);
-        //en caso que haya algo en el div en el que voy a agregar cosas, primero lo borro
         $("#mensajeOferta").html("");
+
         //Si la oferta es menor o igual que el numero de base que figura en la tabla, doy ese msj
         if (oferta <= obra1.base)  {
             $("#mensajeOferta").append(`<div class="Cormorant" style="display: none">Hola ${nombre}, debe ofertar un valor mayor al precio base:
@@ -88,6 +79,7 @@ function validarFormulario(e){
             $("div").fadeIn(700); 
         }
         //Si la oferta es mayor que el numero de base que figura en la tabla, doy ese msj y guardo el contenido
+        
         else {
             let valorTotal = calcularComision(oferta, 1.185);
             console.log(valorTotal);
@@ -106,7 +98,6 @@ function validarFormulario(e){
         }
     }
 }
-
 
 
 $("#mostrarOfertas").fadeOut("slow", function(){

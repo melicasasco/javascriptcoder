@@ -19,6 +19,6 @@ function validarFormulario(e){
         formulario.reset();
     }
 
-    }
+}
 
 
