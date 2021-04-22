@@ -23,10 +23,7 @@ function calcularComision (valorOfertado, porcentajeComision){
 
 $("#formularioSubastas").submit(validarFormulario);
 
-<<<<<<< HEAD:mainSubastas.js
-=======
-//Pagina de ver mis ofertas
->>>>>>> 1636649f29bc7e828cc8d1b41789c4789ceafb12:mainPracticaSubastas.js
+
 
 $("#mostrarOfertas").click(verMiOferta);
 
