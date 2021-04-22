@@ -21,15 +21,6 @@ function calcularComision (valorOfertado, porcentajeComision){
 
 $("#formularioSubastas").submit(validarFormulario);
 
-//funcion p recorrer las ofertas guardadas en el sessionStorage
-/*function verMiOferta () {
-    let len=sessionStorage.length;
-    for(var i=0; i<len; i++) {
-        var key = sessionStorage.key(i);
-        var value = sessionStorage.getItem(key);
-        alert("Usted ofertó " + value + " por la obra intitulada " + key);
-    }
-}*/
 
 $("#mostrarOfertas").click(verMiOferta);
 
@@ -42,7 +33,6 @@ function verMiOferta (e) {
         if(!isNaN(sessionStorage.getItem(sessionStorage.key(i)))){
             var key = sessionStorage.key(i);
             var value = sessionStorage.getItem(key);
-            //alert("Usted ofertó " + value + " por la obra intitulada " + key);
             $("#verMiOferta").append(`<div class="container">
                                         <div class="row d-flex justify-content-center">
                                             <div class="col-6 text-center">
