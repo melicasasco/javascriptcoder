@@ -1,5 +1,6 @@
 //formulario de la seccion Subastas
 
+//declaro la clase obra con atributo artista, tecnica, titulo y base
 
 class Obra {
     constructor (artista, tecnica, titulo, base) {
@@ -18,18 +19,27 @@ function calcularComision (valorOfertado, porcentajeComision){
 }
 
 
+// cuando el usuario hace submit del formulario con el ID formularioSubastas llamo funcion validarFormulario
 
 $("#formularioSubastas").submit(validarFormulario);
 
+<<<<<<< HEAD:mainSubastas.js
+=======
+//Pagina de ver mis ofertas
+>>>>>>> 1636649f29bc7e828cc8d1b41789c4789ceafb12:mainPracticaSubastas.js
 
 $("#mostrarOfertas").click(verMiOferta);
 
 
 function verMiOferta (e) {
     console.log("Entro a la funcion");
+    //me guardo en len el length de sessionstorage, o sea cantidad de elementos
     let len=sessionStorage.length;
+    //si ya habia algo en el div que inserto contenido primero lo borro
     $("#verMiOferta").html('');
+    //recorro todos los elementos de mi session storage
     for(var i=0; i<len; i++) {
+        // Obtengo valor del sessionStorage y si es numerico entro al if
         if(!isNaN(sessionStorage.getItem(sessionStorage.key(i)))){
             var key = sessionStorage.key(i);
             var value = sessionStorage.getItem(key);
@@ -59,7 +69,7 @@ function validarFormulario(e){
     let titulo = $("#tituloObra").text();
     let tecnica = $("#tecnicaObra").text();
     let base = parseInt($("#baseObra").text());
-    // creo objeto Obra con esos valores
+    // creo objeto Obra llamando al constructor 
     const obra1 = new Obra (artista, tecnica, titulo, base); 
     // del input con ID name obtengo el nombre que ingresa el usuario y lo guardo
     var nombre = $("#name").val();
@@ -72,6 +82,7 @@ function validarFormulario(e){
     if (!isNaN(oferta)) {
         console.log("oferta: " + oferta);
         console.log("base:" + base);
+        //en caso que haya algo en el div en el que voy a agregar cosas, primero lo borro
         $("#mensajeOferta").html("");
         //Si la oferta es menor o igual que el numero de base que figura en la tabla, doy ese msj
         if (oferta <= obra1.base)  {

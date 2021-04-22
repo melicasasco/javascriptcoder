@@ -1,10 +1,14 @@
+// declaro array vacios artistas
 const artistas = [];
 
+
+//funcion para cargar el array con los artistas que tengo dentro del json
 function cargarArtistas() {
-  // Ajax
+  // Uso de Ajax con archivo local artistas.json  
   $.getJSON('artistas.json', (res, estado) => {
     if (estado === "success") {
       console.log(res);
+      //guardo los objetos que tengo en json en el array
       res.map(a=>artistas.push(a));
     } else {
       console.log('Error al cargar artistas.')
@@ -13,9 +17,12 @@ function cargarArtistas() {
   });
 }
 
+// funcion para agregar artistas al html
 function agregarArtistaADom() {
   console.log("hola");
+  // recorro el array de artistas
   for(artista of artistas) {
+    //para cada elemento de artistas inserto un div con sus datos
     $('#artistas').append(`
       <div id="artista_${artista.id}">
         <div class="row d-flex justify-content-center">
@@ -26,9 +33,11 @@ function agregarArtistaADom() {
           </div>
         </div>
       </div>`);
+      //los dejo en hide para elegir luego cuando losmuestro
     $(`#artista_${artista.id}`).hide();
   }
 }
+
 
 function filtrarYOrdenar(busqueda) {
   // recorro el array de artistas
