@@ -54,23 +54,32 @@ function verMiOferta (e) {
         <p id="volverSubastas" class="text-center"><a href="subastas.html"><u>Ver más obras de la subasta</u></a></p>`);
 }
 
+function borrarContenido (id) {
+    $(`#${id}`).html("");
+}
+
+
+function obtenerObra () {
+    var artista = $("#artistaObra").text();
+    var titulo = $("#tituloObra").text();
+    var tecnica = $("#tecnicaObra").text();
+    var base = parseInt($("#baseObra").text());
+    const obra = new Obra (artista, tecnica, titulo, base); 
+    return obra;
+
+}
 
 function validarFormulario(e){
     e.preventDefault();
     //creo variables que guardan valor de lo que figura en la tabla con los datos de la obra
-    let artista = $("#artistaObra").text();
-    let titulo = $("#tituloObra").text();
-    let tecnica = $("#tecnicaObra").text();
-    let base = parseInt($("#baseObra").text());
-    const obra1 = new Obra (artista, tecnica, titulo, base); 
+    const obra1 = obtenerObra();
     var nombre = $("#name").val();
     var email = $("#email").val();
     var oferta = parseInt($("#oferta").val());
+    console.log(oferta);
     // si la oferta es un numero, entro al if
     if (!isNaN(oferta)) {
-        console.log("oferta: " + oferta);
-        console.log("base:" + base);
-        $("#mensajeOferta").html("");
+        borrarContenido("mensajeOferta");
 
         //Si la oferta es menor o igual que el numero de base que figura en la tabla, doy ese msj
         if (oferta <= obra1.base)  {
@@ -88,7 +97,7 @@ function validarFormulario(e){
             $("div").fadeIn(700); 
             $("#formularioSubastas").trigger("reset");
             // me guardo la el titulo de la obra y la oferta realizada
-            sessionStorage.setItem(titulo, oferta);
+            sessionStorage.setItem(obra1.titulo, oferta);
             // creo un boton por el cual puedo ver la oferta guardada porque le pongo un onclick
             //que llama a la funcion "verMiOferta()"
             $("#mensajeOferta").append(`<div class="d-flex justify-content-center pb-4">
