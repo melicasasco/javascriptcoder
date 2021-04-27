@@ -5,7 +5,7 @@ const artistas = [];
 //funcion para cargar el array con los artistas que tengo dentro del json
 function cargarArtistas() {
   // Uso de Ajax con archivo local artistas.json  
-  $.getJSON('./artistas.json', (res, estado) => {
+  $.getJSON('artistas.json', (res, estado) => {
     if (estado === "success") {
       console.log(res);
       //guardo los objetos que tengo en json en el array
